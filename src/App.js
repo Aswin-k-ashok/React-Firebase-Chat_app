@@ -57,7 +57,7 @@ function SignIn(){
 
 function SignOut(){
   return auth.currentUser &&(
-      <button onClick={()=> auth.signOut()}>sign out</button>
+      <button onClick={()=> auth.signOut()}className='signOUt'>sign out</button>
   )
 }
 
@@ -82,15 +82,16 @@ function ChatRoom(){
       photoURL
     
     })
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
     setFormValue('');
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
 
   }
   return(
-    <div>
+    <div style={{marginBottom:"4.5em"}}>
       <div>
           {messages && messages.map(msg=> <ChatMessage key={msg.id} message ={msg}/> )}
           
+      <div ref={dummy}></div>
       </div>
 
       <form onSubmit={sendMessage}>
@@ -99,7 +100,6 @@ function ChatRoom(){
           <button type="submit" disabled={!formValue}> 🕊️ </button>
       </form>
 
-      
     </div>
   )
 
